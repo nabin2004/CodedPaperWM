@@ -1,12 +1,13 @@
 from google.adk.tools.agent_tool import AgentTool
-from arxiv_req import fetch_arxiv_papers
+from .arxiv_req import fetch_arxiv_papers
 
 class ArxivAgentTool(AgentTool):
     """
     AgentTool wrapper to fetch arXiv papers dynamically.
     """
     def __init__(self):
-        super().__init__(name="arxiv_fetcher", description="Fetch recent papers from arXiv based on a query.")
+        # super().__init__(name="arxiv_fetcher", description="Fetch recent papers from arXiv based on a query.")
+        pass
 
     def execute(self, query: str):
         """
@@ -14,7 +15,7 @@ class ArxivAgentTool(AgentTool):
         Returns a list of papers.
         """
         papers = fetch_arxiv_papers(query, max_results=5)
-        formatted = []
+        formatted = []  
         for p in papers:
             formatted.append(
                 f"Title: {p['title']}\n"
